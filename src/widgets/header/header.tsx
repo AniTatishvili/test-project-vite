@@ -1,5 +1,5 @@
 // widgets/header.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PContentSection } from "../../entities/layouts/PContentSection/PContentSection";
 import { HeaderMenu, MobileMenu } from "../../entities/menu";
 import { GSearchButton } from "../../shared/ui/buttons";
@@ -10,6 +10,7 @@ import burger from "../../assets/images/icons/mobile-menu.svg";
 export const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [shouldStickMenu, setShouldStickMenu] = useState(false);
 
   const handleSearchOpen = () => {
     setIsSearchOpen(true);
@@ -23,8 +24,18 @@ export const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setShouldStickMenu(scrollPosition > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header>
+    <header className="relative bg-white w-full">
       <PContentSection>
         <div className="flex justify-between items-center pt-[29px] pb-[25px] relative">
           <button className="flex md:hidden" onClick={toggleMobileMenu}>
@@ -37,7 +48,9 @@ export const Header = () => {
           </div>
         </div>
       </PContentSection>
-      <HeaderMenu />
+
+      <HeaderMenu shouldStick={shouldStickMenu} />
+
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
     </header>
   );

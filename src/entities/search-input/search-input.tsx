@@ -28,9 +28,10 @@ export const SearchInput = ({ isOpen, onClose }: SearchInputProps) => {
         type="text"
         value={searchQuery}
         onChange={handleInputChange}
-        className="text-[#9B9B9B] text-[14px] font-weight-[400] border border-gray-500 px-3 py-1 w-full md:w-50"
+        className="text-[#9B9B9B] text-[14px] font-weight-[400] border border-[#E9E9E9] rounded px-3 py-2 w-full md:w-70"
         autoFocus
         aria-label="Search posts"
+        placeholder="Search posts"
       />
       <XButton onClick={handleClose} className="cursor-pointer" />
     </div>
