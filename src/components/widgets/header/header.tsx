@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { PContentSection } from "../../entities/layouts/PContentSection/PContentSection";
 import { HeaderMenu, MobileMenu } from "../../entities/menu";
 import { GSearchButton } from "../../../shared/ui/buttons";
@@ -9,7 +9,6 @@ import mobileMenuIcon from "../../../assets/images/icons/mobile-menu.svg";
 export const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [shouldStickMenu, setShouldStickMenu] = useState(false);
 
   const handleSearchOpen = () => {
     setIsSearchOpen(true);
@@ -22,16 +21,6 @@ export const Header = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setShouldStickMenu(scrollPosition > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <>
@@ -52,7 +41,7 @@ export const Header = () => {
         <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
       </header>
 
-      <HeaderMenu shouldStick={shouldStickMenu} />
+      <HeaderMenu />
     </>
   );
 };

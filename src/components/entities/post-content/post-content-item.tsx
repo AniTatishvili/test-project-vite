@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { PostData } from "../../../utils/types";
 import { CustomModal } from "../../../shared/ui/modals/custom-modal";
+import { PostModalContent } from "./post-modal-content";
 
 interface Props {
   data: PostData[];
@@ -34,7 +35,11 @@ export const PostContentItem: React.FC<Props> = ({ data }) => {
         </div>
       ))}
 
-      {selectedPost && <CustomModal title={selectedPost.title} text={selectedPost.text} onClose={() => setSelectedPost(null)} />}
+      {selectedPost && (
+        <CustomModal callback={() => setSelectedPost(null)}>
+          <PostModalContent post={selectedPost} />
+        </CustomModal>
+      )}
     </>
   );
 };
