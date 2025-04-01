@@ -17,6 +17,13 @@ export const PostContent = () => {
     return data.filter((post: { title: string; text: string }) => post.title.toLowerCase().includes(query) || post.text.toLowerCase().includes(query));
   }, [data, searchQuery]);
 
+  // const filteredPosts = data
+  // ? data.filter((post: { title: string; text: string }) =>
+  //     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //     post.text.toLowerCase().includes(searchQuery.toLowerCase())
+  //   )
+  // : [];
+
   if (isLoading) return <div className="text-center p-8">Loading posts...</div>;
   if (error) return <div className="text-red-500 p-8">Error: {(error as Error).message}</div>;
 

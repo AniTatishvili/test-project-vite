@@ -18,7 +18,7 @@ export const PostContentItem: React.FC<Props> = ({ data }) => {
     <>
       {data.map((post, i) => (
         <div key={i} className="max-w-[360px] flex flex-col gap-4 cursor-pointer" onClick={() => setSelectedPost(post)}>
-          <img src={post.img} alt={post.img} className="w-full h-auto" />
+          <img src={post.img} srcSet={`${post.img} 1x, ${post.img_2x} 2x`} alt={post.img || "Post image"} className="w-full h-auto" />
           <span className="text-[#EB0028] text-[13px] font-[700]">{post.tags}</span>
           <div className="flex flex-col gap-4 text-[#9B9B9B]">
             <h3 className="text-[#000] text-[24px] leading-[30px] font-[700]">{post.title}</h3>
