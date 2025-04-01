@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { XButton } from "../../shared/ui/buttons/XButton";
-import { Logotype } from "../../shared/ui/logotype";
+import { XButton } from "../../../shared/ui/buttons/XButton";
+import { Logotype } from "../../../shared/ui/logotype";
 import { MenuList } from "./menu-list";
 
 interface MobileMenuProps {

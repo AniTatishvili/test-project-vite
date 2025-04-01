@@ -1,7 +1,7 @@
 // components/PostContentItem.tsx
 import React, { useState } from "react";
-import { PostData } from "../../utils/types";
-import { CustomModal } from "../../shared/ui/modals/custom-modal";
+import { PostData } from "../../../utils/types";
+import { CustomModal } from "../../../shared/ui/modals/custom-modal";
 
 interface Props {
   data: PostData[];

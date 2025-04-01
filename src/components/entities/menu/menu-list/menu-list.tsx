@@ -1,11 +1,9 @@
-import { menuItems } from "../../../shared/data/menu-items";
+import { menuItems } from "../../../../shared/data/menu-items";
 import { MenuListItem } from "./menu-list-item";
-
-import s from "./menu-list.module.scss";
 
 export const MenuList = () => {
   return (
-    <ul className={s.navbar}>
+    <ul className="block md:flex gap-5">
       {menuItems.map((item) => (
         <MenuListItem key={item.id} item={item} />
       ))}
